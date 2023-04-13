@@ -51,5 +51,18 @@
     {{ $commandDelay := $.Site.Params.Terminal.commandDelay }}
 
     {{ partial "partials/typeIndex.html" (dict "context" . "env" $env "cd" $cd "envWithDir" $envWithDir "cat" $cat "description" $description "tree" $tree "leaf" $leaf "ps1delay" $ps1Delay "stdoutdelay" $stdoutDelay "commanddelay" $commandDelay ) }}
+{{ with .Site.GetPage "/" }}
+    {{ .Content }}
+{{ end }}
+<div class="post-list">
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+        {{ if in .Type .Site.Params.mainSections }}
+            <article>
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            </article>
+        {{ end }}
+    {{ end }}
+</div>
 
 {{ end }}
