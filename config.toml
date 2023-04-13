@@ -2,3 +2,6 @@ baseURL = 'https://vMaestro.cloud/'
 languageCode = 'en-us'
 title = 'vMaestro'
 theme = 'shell'
+
+[params]
+mainSections = ["posts"]
